@@ -4,7 +4,7 @@
     "href": "posts/example-blog-post/index.html",
     "title": "Hello Blog",
     "section": "",
-    "text": "from source import Perceptron\nThis is an example of the blog posts that you’ll submit as your primary form of learning demonstration in CSCI 0451. I created this post by modifying the file posts/example-blog-post/index.ipynb in VSCode. You can also use JupyterLab for this editing if you prefer. Finally, it is possible to write blog posts without using notebooks by writing .qmd files, as illustrated here."
+    "text": "from source import Perceptron\np = Perceptron()\n\nI did it!!\nnot implemented\nThis is an example of the blog posts that you’ll submit as your primary form of learning demonstration in CSCI 0451. I created this post by modifying the file posts/example-blog-post/index.ipynb in VSCode. You can also use JupyterLab for this editing if you prefer. Finally, it is possible to write blog posts without using notebooks by writing .qmd files, as illustrated here."
   },
   {
     "objectID": "posts/example-blog-post/index.html#math",
@@ -16,14 +16,14 @@
   {
     "objectID": "posts/new-test-post/index.html",
     "href": "posts/new-test-post/index.html",
-    "title": "Hello Blog",
+    "title": "Second Post",
     "section": "",
-    "text": "from source import Perceptron\nThis is an example of the blog posts that you’ll submit as your primary form of learning demonstration in CSCI 0451. I created this post by modifying the file posts/example-blog-post/index.ipynb in VSCode. You can also use JupyterLab for this editing if you prefer. Finally, it is possible to write blog posts without using notebooks by writing .qmd files, as illustrated here."
+    "text": "from source import Perceptron\np = Perceptron()\n\nI did it!!\nnot implemented\nThis is an example of the blog posts that you’ll submit as your primary form of learning demonstration in CSCI 0451. I created this post by modifying the file posts/example-blog-post/index.ipynb in VSCode. You can also use JupyterLab for this editing if you prefer. Finally, it is possible to write blog posts without using notebooks by writing .qmd files, as illustrated here."
   },
   {
     "objectID": "posts/new-test-post/index.html#math",
     "href": "posts/new-test-post/index.html#math",
-    "title": "Hello Blog",
+    "title": "Second Post",
     "section": "Math",
     "text": "Math\nIn addition to regular text using the Markdown specification, you can also write mathematics, enclosed between dollar signs. The syntax for writing math is very similar to the syntax used in the \\(\\LaTeX\\) markup language. For example, $f(x) \\approx y$ renders to \\(f(x) \\approx y\\). To place complex mathematical expressions on their own lines, use double dollar signs. For example, the expression\n$$\\mathcal{L}(a, b) = \\sum_{i = 1}^n (ax_i + b - y_i)^2$$\nrenders to:\n\\[\\mathcal{L}(a, b) = \\sum_{i = 1}^n (ax_i + b - y_i)^2\\;.\\]\nBehind the scenes, math is powered by the MathJax engine. For more on how to write math, check this handy tutorial and quick reference."
   },
@@ -32,7 +32,7 @@
     "href": "index.html",
     "title": "My Awesome CSCI 0451 Blog",
     "section": "",
-    "text": "Hello Blog\n\n\n\n\n\nA new blog post that I just made!\n\n\n\n\n\n\nMar 10, 2023\n\n\nPhil Chodrow\n\n\n\n\n\n\n  \n\n\n\n\nHello Blog\n\n\n\n\n\nAn example blog post illustrating the key techniques you’ll need to demonstrate your learning in CSCI 0451.\n\n\n\n\n\n\nJan 10, 2023\n\n\nPhil Chodrow\n\n\n\n\n\n\nNo matching items"
+    "text": "Experiments\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nSecond Post\n\n\n\n\n\nA new blog post that I just made!\n\n\n\n\n\n\nMar 10, 2023\n\n\nPhil Chodrow\n\n\n\n\n\n\n  \n\n\n\n\nHello Blog\n\n\n\n\n\nAn example blog post illustrating the key techniques you’ll need to demonstrate your learning in CSCI 0451.\n\n\n\n\n\n\nJan 10, 2023\n\n\nPhil Chodrow\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",
@@ -40,5 +40,12 @@
     "title": "About",
     "section": "",
     "text": "About this blog"
+  },
+  {
+    "objectID": "posts/blog-1/blog1.html",
+    "href": "posts/blog-1/blog1.html",
+    "title": "Experiments",
+    "section": "",
+    "text": "import numpy as np\nimport pandas as pd\nimport seaborn as sns\nfrom matplotlib import pyplot as plt\nfrom sklearn.datasets import make_blobs\n\nfrom perceptron import Perceptron\n\nnp.random.seed(12345)\n\nn = 100\np_features = 3\n\nX, y = make_blobs(n_samples = 100, n_features = p_features - 1, centers = [(-1.7, -1.7), (1.7, 1.7)])\n\np = Perceptron()\np.fit(X, y, max_steps=1000)\np.w\nprint(p.history[-10:])\n\nw= np.array([1, 2, 3, 4, 5])\nx= np.array([2, 2, 3, 4, 5])\nb= 1000\n\n\ndef draw_line(w, x_min, x_max):\n  x = np.linspace(x_min, x_max, 101)\n  y = -(w[0]*x + w[2])/w[1]\n  plt.plot(x, y, color = \"black\")\n\nfig = plt.scatter(X[:,0], X[:,1], c = y)\nfig = draw_line(p.w, -2, 2)\n\nxlab = plt.xlabel(\"Feature 1\")\nylab = plt.ylabel(\"Feature 2\")\n\n#print(Perceptron.perceptron_classify(w, b ,x))\n\n#print(Perceptron.fit(w,x))\n\n[0.99, 0.99, 0.99, 0.99, 0.99, 0.99, 0.99, 0.99, 0.99, 1.0]\n\n\n\n\n\n\nfig = plt.plot(p.history)\nxlab = plt.xlabel(\"Iteration\")\nylab = plt.ylabel(\"Accuracy\")\n\n\n\n\nUsing 2d data like the data in the example, if the data is linearly separable then the perceptron algorithm converges to weight vector w describing a separating line (provided that the maximum number of iterations is large enough).\nPlease show visualizations of the data, the separating line, and the evolution of the accuracy over training. It’s also fine for you to use the loss instead of the accuracy if you’d prefer.\n(The two visualizations above show the data with the line of separation and the evolution of the accuracy over time)\nFor 2d data, when the data is not linearly separable, the perceptron algorithm will not settle on a final value of w, but will instead run until the maximum number of iterations is reached, without achieving perfect accuracy.\nPlease show visualizations of the data, the line in the final iteration, and the evolution of the score over training.\n\nimport numpy as np\nimport pandas as pd\nimport seaborn as sns\nfrom matplotlib import pyplot as plt\nfrom sklearn.datasets import make_blobs\n\nfrom perceptron import Perceptron\n\nnp.random.seed(12345)\n\nn = 100\np_features = 3\n\nX, y = make_blobs(n_samples = 100, n_features = p_features - 1, centers =  [(0, 0), (0, 0)])\n\np = Perceptron()\np.fit(X, y, max_steps=1000)\np.w\nprint(p.history[-10:])\n\nw= np.array([1, 2, 3, 4, 5])\nx= np.array([2, 2, 3, 4, 5])\nb= 1000\n\n\ndef draw_line(w, x_min, x_max):\n  x = np.linspace(x_min, x_max, 101)\n  y = -(w[0]*x + w[2])/w[1]\n  plt.plot(x, y, color = \"black\")\n\nfig = plt.scatter(X[:,0], X[:,1], c = y)\nfig = draw_line(p.w, -2, 2)\n\nxlab = plt.xlabel(\"Feature 1\")\nylab = plt.ylabel(\"Feature 2\")\n\n[0.52, 0.54, 0.45, 0.48, 0.48, 0.41, 0.47, 0.48, 0.48, 0.48]\n\n\n\n\n\n\nfig = plt.plot(p.history)\nxlab = plt.xlabel(\"Iteration\")\nylab = plt.ylabel(\"Accuracy\")\n\n\n\n\nThe perceptron algorithm is also able to work in more than 2 dimensions! Show an example of running your algorithm on data with at least 5 features. You don’t need to visualize the data or the separating line, but you should still show the evolution of the score over the training period. Include a comment on whether you believe that the data is linearly separable based on your observation of the score.\n\nimport numpy as np\nimport pandas as pd\nimport seaborn as sns\nfrom matplotlib import pyplot as plt\nfrom sklearn.datasets import make_blobs\n\nfrom perceptron import Perceptron\n\nnp.random.seed(12345)\n\nn = 100\np_features = 5\n\nX, y = make_blobs(n_samples = 100, n_features = p_features - 1, centers = [(8, 8), (-8, -8), (0, 0), (4, 4)])\n\np = Perceptron()\np.fit(X, y, max_steps=50000)\np.w\nprint(p.history[-10:])\n\nw= np.array([1, 2, 3, 4, 5])\nx= np.array([2, 2, 3, 4, 5])\nb= 1000\n\n[0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5]\n\n\nHere is the link to the python file: https://github.com/pwad1/465_blog1/blob/main/perceptron.py"
   }
 ]
