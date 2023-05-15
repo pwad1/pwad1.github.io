@@ -32,7 +32,7 @@
     "href": "index.html",
     "title": "My Awesome CSCI 0451 Blog",
     "section": "",
-    "text": "Experiments\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nPerceptron\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nLearning from Timnit Gebru (Parts 1 and 2)\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nSecond Post\n\n\n\n\n\nA new blog post that I just made!\n\n\n\n\n\n\nMar 10, 2023\n\n\nPhil Chodrow\n\n\n\n\n\n\n  \n\n\n\n\nHello Blog\n\n\n\n\n\nAn example blog post illustrating the key techniques you’ll need to demonstrate your learning in CSCI 0451.\n\n\n\n\n\n\nJan 10, 2023\n\n\nPhil Chodrow\n\n\n\n\n\n\nNo matching items"
+    "text": "Experiments\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nOptimization for Logistic Regression\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nPerceptron\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nLearning from Timnit Gebru (Parts 1 and 2)\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nSecond Post\n\n\n\n\n\nA new blog post that I just made!\n\n\n\n\n\n\nMar 10, 2023\n\n\nPhil Chodrow\n\n\n\n\n\n\n  \n\n\n\n\nHello Blog\n\n\n\n\n\nAn example blog post illustrating the key techniques you’ll need to demonstrate your learning in CSCI 0451.\n\n\n\n\n\n\nJan 10, 2023\n\n\nPhil Chodrow\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",
@@ -110,5 +110,19 @@
     "title": "Perceptron",
     "section": "Experiment 2",
     "text": "Experiment 2\nFor 2d data, when the data is not linearly separable, the perceptron algorithm will not settle on a final value of w, but will instead run until the maximum number of iterations is reached, without achieving perfect accuracy.\nPlease show visualizations of the data, the line in the final iteration, and the evolution of the score over training.\n\nimport numpy as np\nimport pandas as pd\nimport seaborn as sns\nfrom matplotlib import pyplot as plt\nfrom sklearn.datasets import make_blobs\n\nfrom perceptron import Perceptron\n\nnp.random.seed(12345)\n\nn = 100\np_features = 3\n\nX, y = make_blobs(n_samples = 100, n_features = p_features - 1, centers =  [(0, 0), (0, 0)])\n\np = Perceptron()\np.fit(X, y, max_steps=1000)\np.w\nprint(p.history[-10:])\n\nw= np.array([1, 2, 3, 4, 5])\nx= np.array([2, 2, 3, 4, 5])\nb= 1000\n\n\ndef draw_line(w, x_min, x_max):\n  x = np.linspace(x_min, x_max, 101)\n  y = -(w[0]*x + w[2])/w[1]\n  plt.plot(x, y, color = \"black\")\n\nfig = plt.scatter(X[:,0], X[:,1], c = y)\nfig = draw_line(p.w, -2, 2)\n\nxlab = plt.xlabel(\"Feature 1\")\nylab = plt.ylabel(\"Feature 2\")\n\n[0.52, 0.54, 0.45, 0.48, 0.48, 0.41, 0.47, 0.48, 0.48, 0.48]\n\n\n\n\n\n\nfig = plt.plot(p.history)\nxlab = plt.xlabel(\"Iteration\")\nylab = plt.ylabel(\"Accuracy\")\n\n\n\n\nThe perceptron algorithm is also able to work in more than 2 dimensions! Show an example of running your algorithm on data with at least 5 features. You don’t need to visualize the data or the separating line, but you should still show the evolution of the score over the training period. Include a comment on whether you believe that the data is linearly separable based on your observation of the score.\n\nimport numpy as np\nimport pandas as pd\nimport seaborn as sns\nfrom matplotlib import pyplot as plt\nfrom sklearn.datasets import make_blobs\n\nfrom perceptron import Perceptron\n\nnp.random.seed(12345)\n\nn = 100\np_features = 5\n\nX, y = make_blobs(n_samples = 100, n_features = p_features - 1, centers = [(8, 8), (-8, -8), (0, 0), (4, 4)])\n\np = Perceptron()\np.fit(X, y, max_steps=50000)\np.w\nprint(p.history[-10:])\n\nw= np.array([1, 2, 3, 4, 5])\nx= np.array([2, 2, 3, 4, 5])\nb= 1000\n\n[0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5]\n\n\nHere is the link to the python file: https://github.com/pwad1/465_blog1/blob/main/perceptron.py"
+  },
+  {
+    "objectID": "posts/blog-2/GradientDescent.html",
+    "href": "posts/blog-2/GradientDescent.html",
+    "title": "Optimization for Logistic Regression",
+    "section": "",
+    "text": "title: Optimization for Logistic Regression author: Prateek Wadhavkar\nHere is the link to the python file: https://github.com/pwad1/pwad1.github.io/blob/main/posts/blog-2/solutions.py\nfrom solutions import LogisticRegression # your source code\nfrom sklearn.datasets import make_blobs\nfrom matplotlib import pyplot as plt\nimport numpy as np\nnp.seterr(all='ignore') \n\n# make the data\np_features = 3\nX, y = make_blobs(n_samples = 200, n_features = p_features - 1, centers = [(-1, -1), (1, 1)])\n\nfig = plt.scatter(X[:,0], X[:,1], c = y)\nxlab = plt.xlabel(\"Feature 1\")\nylab = plt.ylabel(\"Feature 2\")\nLR = LogisticRegression()\nLR.fit(X, y, alpha = 0.1, max_epochs = 1000)\n\nLR.fit_stochastic(X, y, max_epochs = 1000, batch_size=10, alpha=0.1)\n\n# inspect the fitted value of w\nLR.w \nprint(LR.w)\nfig = plt.scatter(X[:,0], X[:,1], c = y)\nxlab = plt.xlabel(\"Feature 1\")\nylab = plt.ylabel(\"Feature 2\")\n\n[ 2.52585799  2.28865329 -0.24381554]"
+  },
+  {
+    "objectID": "posts/blog-2/GradientDescent.html#illustration",
+    "href": "posts/blog-2/GradientDescent.html#illustration",
+    "title": "Optimization for Logistic Regression",
+    "section": "Illustration",
+    "text": "Illustration\n\nnum_steps = len(LR.loss_history)\nplt.plot(np.arange(num_steps) + 1, LR.loss_history, label = \"gradient\")\n\nnum_steps = len(LR.loss_history_st)\nplt.plot(np.arange(num_steps) + 1, LR.loss_history_st, label = \"stochastic gradient\")\n\nplt.loglog()\n\nlegend = plt.legend()"
   }
 ]

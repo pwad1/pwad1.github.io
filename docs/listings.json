@@ -3,6 +3,7 @@
     "listing": "/index.html",
     "items": [
       "/posts/blog-1duplicate/blog1.html",
+      "/posts/blog-2/GradientDescent.html",
       "/posts/blog-1/blog1.html",
       "/posts/blog-timnit-gebru/TimnitGebru.html",
       "/posts/new-test-post/index.html",
