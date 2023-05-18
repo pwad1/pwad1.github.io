@@ -24,9 +24,12 @@ class LogisticRegression:
         return l
     
     def score(self, X, y): #stores and returns the score 
-        s= 1-self.loss(X,y)
+        s=(self.predict(X)==y).mean #s= 1-self.loss(X,y)
         self.score_history.append(s)
         return s
+        
+        
+        
     
     def fit(self, X, y, alpha, max_epochs=100):
         X=np.concatenate([X, np.ones((X.shape[0], 1))], axis=1) #pads X
@@ -54,7 +57,7 @@ class LogisticRegression:
         return l
     
     def score_st(self, X, y): #stores and returns the score 
-        s= 1-self.loss_st(X,y)
+        s= s=(self.predict_st(X)==y).mean
         self.score_history_st.append(s)
         return s
         
